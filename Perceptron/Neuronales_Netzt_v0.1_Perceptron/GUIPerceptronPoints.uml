@@ -1,0 +1,65 @@
+﻿[Files]
+File0=C:\Users\pierr\OneDrive\Dokumente\W_Seminar\W_Seminar\Perceptron\Neuronales_Netzt_v0.1_Perceptron\GUI.java
+File1=C:\Users\pierr\OneDrive\Dokumente\W_Seminar\W_Seminar\Perceptron\Neuronales_Netzt_v0.1_Perceptron\Perceptron.java
+File2=C:\Users\pierr\OneDrive\Dokumente\W_Seminar\W_Seminar\Perceptron\Neuronales_Netzt_v0.1_Perceptron\Points.java
+File3=C:\Users\pierr\OneDrive\Dokumente\W_Seminar\W_Seminar\Perceptron\Neuronales_Netzt_v0.1_Perceptron\rsdfgdfg.java
+
+[Box:  - GUI]
+X=500
+Y=31
+ShowParameter=4
+ShowIcons=2
+FontSize=12
+FontName=Segoe UI
+
+[Box:  - Perceptron]
+X=258
+Y=37
+ShowParameter=4
+ShowIcons=2
+FontSize=12
+FontName=Segoe UI
+
+[Box:  - Points]
+X=271
+Y=224
+ShowParameter=4
+ShowIcons=2
+FontSize=12
+FontName=Segoe UI
+
+[Box:  - rsdfgdfg]
+X=685
+Y=135
+ShowParameter=4
+ShowIcons=2
+FontSize=12
+FontName=Segoe UI
+
+[Diagram]
+comments=0
+OffsetX=0
+OffsetY=0
+Visibility=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+ShowConnections=0
+Fontname=Segoe UI
+Fontsize=12
+ShowObjectDiagram=0
+
+[Connections]
+V0=Perceptron#Points#Aggregation####0#0#0###0#0
+
+[Interactive]
+I0=
+I1=Points points1 = new Points();
+I2=Perceptron perceptron1 = new Perceptron();
+
+[Window]
+Left=-8
+Top=-31
+Width=1549
+Height=560
+
