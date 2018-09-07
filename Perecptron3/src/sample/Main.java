@@ -18,7 +18,7 @@ import java.awt.*;
 
 public class Main extends Application {
 
-    private static Points[] points = new Points[1000];
+    private static Points[] points = new Points[80];
     private static int height = 800;
     private static int weight = 800;
     static Perceptron perceptron = new Perceptron();
@@ -66,11 +66,6 @@ public class Main extends Application {
 
         //System.out.println("hallo");
         ///Trainieren
-        for(int a = 0; a < 5; a++){
-
-
-        }
-
         scene.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
@@ -115,9 +110,6 @@ public class Main extends Application {
         }
         System.out.println("nice");
         launch(args);}
-        public void Learning(){
-
-    } // end of main
 
     public static int getheight(){
 

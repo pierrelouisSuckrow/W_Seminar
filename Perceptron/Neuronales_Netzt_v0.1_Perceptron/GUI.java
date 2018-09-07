@@ -29,7 +29,7 @@ public class GUI extends Application {
     Ellipse e2 = new Ellipse( 100, 100, 40, 40);
     e2.setFill(Color.RED);
     
-    /*
+    
     Perceptron perceptron = new Perceptron();
     for (int i = 0;i < perceptron.points.length  ; i++ ) {
       if(perceptron.points[i].getState() == 1){
@@ -42,7 +42,7 @@ public class GUI extends Application {
         }
           
     } // end of for
-    */
+    
     
   } // end of main
 

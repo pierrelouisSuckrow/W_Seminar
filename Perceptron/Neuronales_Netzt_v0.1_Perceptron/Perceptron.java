@@ -3,7 +3,7 @@ import java.lang.Math;
 
 public class Perceptron
 {
-       public Points[] points = new Points[150];
+       public Points[] points = new Points[100];
         
     private float[] weight;
     
