@@ -7,11 +7,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.la4j.Matrix;
 import org.la4j.matrix.dense.Basic2DMatrix;
+import java.util.Arrays;
+import java.util.Random;
 
 public class Main extends Application {
 
 
-    float[][] weights = new int[][];
 
 
     @Override
@@ -25,10 +26,14 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-
-        Basic2DMatrix matrix = new Basic2DMatrix(9,9);
-
-        for(int i = 0; i < 4; i++)
+        Reader Rinput = new Reader("Input1");
+        double[][] input =  Rinput.newRead();
+        Basic2DMatrix Minput = new Basic2DMatrix(input);
+        Basic2DMatrix target = new Basic2DMatrix(1,1);
+        target.setAll(1);
+        NeuralNetwork netz1 = new NeuralNetwork(Minput.rows(), 2, 2,1);
+        netz1.feedforward(Minput);
+        //netz1.train(Minput, target);
 
         launch(args);
     }

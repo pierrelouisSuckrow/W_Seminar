@@ -21,8 +21,8 @@
 
 package org.la4j.matrix.dense;
 
-import org.junit.Assert;
-import org.junit.Test;
+//import org.junit.Assert;
+//import org.junit.Test;
 import org.la4j.matrix.MatrixFactory;
 import org.la4j.matrix.MatrixTest;
 import org.la4j.matrix.DenseMatrix;
@@ -35,7 +35,7 @@ public abstract class DenseMatrixTest<T extends DenseMatrix> extends MatrixTest<
         super(factory);
     }
 
-    @Test
+    /*@Test
     public void testToArray() {
         double array[][] = new double[][] { 
                 { 1.0, 0.0, 0.0 },
@@ -50,5 +50,6 @@ public abstract class DenseMatrixTest<T extends DenseMatrix> extends MatrixTest<
         for (int i = 0; i < a.rows(); i++) {
             Assert.assertArrayEquals(array[i], toArray[i], 1e-5);
         }
-    }
+    }*/
+
 }

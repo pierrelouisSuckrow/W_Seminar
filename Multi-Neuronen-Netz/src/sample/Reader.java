@@ -1,5 +1,6 @@
 package sample;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 
 public class Reader {
@@ -17,14 +18,17 @@ private BufferedReader reader;
 
     }
 
+    public void test(){}
 
-    public float[][] newRead() {
+
+    public double[][] newRead() {
 
 
 
 
         try {
-            reader = new BufferedReader(new FileReader(Dateiname + ".txt"));
+            System.out.println("Suchen");
+            reader = new BufferedReader(new FileReader("src/sample/resources/" + Dateiname + ".txt"));
             System.out.println("Datei wurde gelesen.");
 
             String StrAnzahlSynapsen;
@@ -34,7 +38,7 @@ private BufferedReader reader;
             int IntAnzahlSynapsen = StringtoInt(StrAnzahlSynapsen);//Konvertierung zu Int
             StrAnzahlInputs = reader.readLine();
             int IntAnzahlInputs = StringtoInt(StrAnzahlInputs); //Konvertierung zu Int
-            float[][] newMatrix = new float[IntAnzahlSynapsen][IntAnzahlInputs];
+            double[][] newMatrix = new double[IntAnzahlSynapsen][IntAnzahlInputs];
 
             for(int i = 0; i < IntAnzahlSynapsen; i++)
             {
@@ -42,25 +46,17 @@ private BufferedReader reader;
                 String[] arr=reihe.split(" ");
                 for(int q=0;q<arr.length;q++)
                 {
-                    float currentNum = StringtoFloat(arr[q]);
+                    double currentNum = StringtoDouble(arr[q]);
                     newMatrix[i][q] = currentNum;
                 }
 
 
             }
 
-            /*
-            while() != null){ //ReadLine gibt die aktuelle Zeile aus und geht zur nÃ¤chsten.
-                String nachname = reader.readLine(); // Zweite Zeile
-                String alter = reader.readLine(); // Dritte Zeile
-                System.out.println(vorname + " " + nachname + " " + alter); // Ausgabe
-                reader.readLine(); // Die leere Zeile
-
-            }
-*/
             reader.close();
             return newMatrix;
         } catch (Exception ex){ // Sollte etwas schief gehen wird dieser Teil ausgeführt
+            System.out.println("Error Reader");
             System.out.println(ex.getMessage());
             return null;
         }
@@ -76,12 +72,12 @@ private BufferedReader reader;
 
 
 
-   private float StringtoFloat(String numberStr){
+   private double StringtoDouble(String numberStr){
 
-        float numberFl;
+        double numberFl;
 
 
-            numberFl = Float.parseFloat(numberStr);
+            numberFl = Double.parseDouble(numberStr);
 
             return numberFl;
 
