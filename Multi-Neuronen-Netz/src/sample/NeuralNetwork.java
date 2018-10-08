@@ -60,7 +60,7 @@ public class NeuralNetwork{
 
 
                 weights[i] = new Basic2DMatrix(inputs, hiddenlayersrows);
-                bias[i] = new BasicVector(inputs);
+                bias[i] = new BasicVector(hiddenlayersrows);
 
             }
 
@@ -87,19 +87,25 @@ public class NeuralNetwork{
 
 
 
-    public Matrix feedforward(Basic2DMatrix input){
-
+    public Vector feedforward(Vector input){
+        System.out.println("Inputs:");
+        System.out.println(input);
 
         for(int i = 0; i < layers-1; i++) {
 
             if(i == 0){
-            hidden[i] = weights[i].multiply(input).toRowVector(); // 1 Hiddenlayer mit Inputs
+                System.out.println("Calculating first Hiddenlayer");
+                hidden[i] = input.multiply(weights[i]); // 1 Hiddenlayer mit Inputs
+                System.out.println("Hidden 0 without Bias or Sig");
+                System.out.println(hidden[i].toString());
 
             }else{ // Hidden mit Hidden
                 System.out.println("nono");
                 hidden[i] = weights[i].multiply(hidden[i-1]);
             }
+            System.out.println("Calculating bias");
             hidden[i].add(bias[i]);
+            System.out.println("Calculating sigmoid");
             hidden[i].update(sigmoid);
 
             System.out.println("hidden" + i);
@@ -108,22 +114,20 @@ public class NeuralNetwork{
         }
         System.out.println("Output calculation");
         try {
-            /*
-            Vector Voutput = weights[layers-1].multiply(hidden[layers-2].toColumnVector());
-            Matrix output = Voutput.toRowMatrix();
-            System.out.println("Test1");
+            Vector output = hidden[layers-2].multiply(weights[layers-1]);
+            System.out.println("Calculating bias output");
             output.add(bias[layers-1]);
-            System.out.println("Test2");
+            System.out.println("Calculating sigmoid output");
             output.update(sigmoid);
 
 
-            System.out.println("output");
+            System.out.println("output:");
             System.out.println(output);
 
 
 
-            */
-            return null;
+
+            return output;
         }catch (Exception e) {
 
             System.out.println(e);
@@ -133,7 +137,7 @@ public class NeuralNetwork{
 
 
     }
-
+    /*
     void train(Basic2DMatrix inputs, Basic2DMatrix knownanswer){
 
         Matrix guess = feedforward(inputs);
@@ -149,5 +153,5 @@ public class NeuralNetwork{
 
         }
     }
-
+*/
 }
