@@ -29,13 +29,13 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-        Reader Rinput = new Reader("Input3");
+        Reader Rinput = new Reader("Input1");
         double[][] input =  Rinput.newRead();
         Basic2DMatrix Minput = new Basic2DMatrix(input);
         Vector Vinput = Minput.toColumnVector();
         Basic2DMatrix target = new Basic2DMatrix(1,1);
         target.setAll(1);
-        NeuralNetwork netz1 = new NeuralNetwork(Minput.rows(), 2, 60,1);
+        NeuralNetwork netz1 = new NeuralNetwork(Minput.rows(), 2, 2,1);//Layers immer mit outputlayer angeben
         netz1.feedforward(Vinput);
         //netz1.train(Minput, target);
 

@@ -27,6 +27,16 @@ public class NeuralNetwork{
             return 1/(1 + Math.exp(-value));
         }
     };
+
+    VectorFunction cost = new VectorFunction() {
+        @Override
+        public double evaluate(int i, double value) {
+            return value*value;
+        }
+    };
+
+
+
     /*
     MatrixFunction sigmoid = new MatrixFunction() {
         @Override
@@ -56,11 +66,17 @@ public class NeuralNetwork{
                 bias[i] = new BasicVector(outputs);
 
 
-            }else {
+            }else if(i == 0){
 
 
                 weights[i] = new Basic2DMatrix(inputs, hiddenlayersrows);
                 bias[i] = new BasicVector(hiddenlayersrows);
+
+
+            }else{
+
+                weights[i] = new Basic2DMatrix(hiddenlayersrows, hiddenlayersrows);
+                bias[i] = new BasicVector(hiddenlayersrows);    
 
             }
 
@@ -100,8 +116,8 @@ public class NeuralNetwork{
                 System.out.println(hidden[i].toString());
 
             }else{ // Hidden mit Hidden
-                System.out.println("nono");
-                hidden[i] = weights[i].multiply(hidden[i-1]);
+                System.out.println("Hiddenlayer " + i);
+                hidden[i] = hidden[i-1].multiply(weights[i]);
             }
             System.out.println("Calculating bias");
             hidden[i].add(bias[i]);
@@ -137,21 +153,37 @@ public class NeuralNetwork{
 
 
     }
-    /*
-    void train(Basic2DMatrix inputs, Basic2DMatrix knownanswer){
 
-        Matrix guess = feedforward(inputs);
-        Matrix output_errors = knownanswer.subtract(guess);
+    public void train(Vector inputs, Vector knownanswer, double learningRate){
 
+        Vector guess = feedforward(inputs);
+        Vector[] errors = new Vector[layers];
+        System.out.println("Calculating Output Error");
+        errors[layers-1] = knownanswer.subtract(guess); //Output Error
 
+        System.out.println("Calculating Hidden Errors");
 
-        Matrix[] hiddenerrors = new Matrix[layers-1];
+        for (int i = layers-2; i >= 0; i--) {
 
-        for (int i=0; i < layers-1; i++) {
+            System.out.println("Calculating Hidden Error: h" + i );
+            errors[i] =  weights[i+1].transpose().multiply(errors[i+1]);
 
-            hiddenerrors[i] =  weights[layers-1-i].transpose().multiply(output_errors);
+        }
+
+        System.out.println("Recalculating weights");
+
+        for (int i = layers-1; i >=0; i--){
+
+            System.out.println("Calculating LearningSlope");
+
+            Matrix LearningSlope = errors[i].multiply()
+
+            System.out.println("Calculating Weights: w" + i);
+
+            weights[i] = weights[i];
+
 
         }
     }
-*/
+
 }
