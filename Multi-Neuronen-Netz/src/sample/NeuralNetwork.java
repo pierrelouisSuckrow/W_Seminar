@@ -4,8 +4,12 @@ import org.la4j.Matrix;
 import org.la4j.Vector;
 import org.la4j.matrix.dense.Basic2DMatrix;
 import org.la4j.matrix.functor.MatrixFunction;
+import org.la4j.operation.VectorOperation;
+import org.la4j.vector.DenseVector;
+import org.la4j.vector.SparseVector;
 import org.la4j.vector.dense.BasicVector;
 import org.la4j.vector.functor.VectorFunction;
+import org.la4j.vector.functor.VectorProcedure;
 
 import java.util.Random;
 
@@ -13,11 +17,12 @@ import java.util.Random;
 public class NeuralNetwork{
 
 
+
     private int inputs;
     private int layers; //Länge des Netzes + Output
     private int outputs; //Anzahl der Ouputs
     private int hiddenlayersrows; //Anzahl der Nodes im HiddenLayer
-    static Basic2DMatrix[] weights; //Gewichtungen
+    static Matrix[] weights; //Gewichtungen
     BasicVector[] bias; //Bias
     static Vector[] hidden; //HiddenLayers
 
@@ -28,24 +33,12 @@ public class NeuralNetwork{
         }
     };
 
-    VectorFunction cost = new VectorFunction() {
+    VectorFunction minus = new VectorFunction() {
         @Override
         public double evaluate(int i, double value) {
-            return value*value;
+            return value*(-1);
         }
     };
-
-
-
-    /*
-    MatrixFunction sigmoid = new MatrixFunction() {
-        @Override
-        public double evaluate(int i, int j, double value) {
-            return 1/(1 + Math.exp(-value));
-        }
-    };
-    */
-
 
     public NeuralNetwork(int inputs, int layers, int hiddenlayersrows, int outputs){
 
@@ -62,14 +55,14 @@ public class NeuralNetwork{
 
             if(i == layers-1) { //Für Outputs
 
-                weights[i] = new Basic2DMatrix(hiddenlayersrows, outputs);
+                weights[i] = new Basic2DMatrix(outputs, hiddenlayersrows);
                 bias[i] = new BasicVector(outputs);
 
 
             }else if(i == 0){
 
 
-                weights[i] = new Basic2DMatrix(inputs, hiddenlayersrows);
+                weights[i] = new Basic2DMatrix(hiddenlayersrows, inputs);
                 bias[i] = new BasicVector(hiddenlayersrows);
 
 
@@ -86,7 +79,8 @@ public class NeuralNetwork{
 
                         double random = (Math.random()*0.12)-0.12;
 
-                        weights[i].set(z, r, random);
+                        //weights[i].set(z, r, random);
+                        weights[i].set(z, r, z*r);
 
 
                     }
@@ -111,7 +105,7 @@ public class NeuralNetwork{
 
             if(i == 0){
                 System.out.println("Calculating first Hiddenlayer");
-                hidden[i] = input.multiply(weights[i]); // 1 Hiddenlayer mit Inputs
+                hidden[i] = weights[i].multiply(input); // 1 Hiddenlayer mit Inputs
                 System.out.println("Hidden 0 without Bias or Sig");
                 System.out.println(hidden[i].toString());
 
@@ -130,7 +124,8 @@ public class NeuralNetwork{
         }
         System.out.println("Output calculation");
         try {
-            Vector output = hidden[layers-2].multiply(weights[layers-1]);
+
+            Vector output = weights[layers-1].multiply(hidden[layers-2]);
             System.out.println("Calculating bias output");
             output.add(bias[layers-1]);
             System.out.println("Calculating sigmoid output");
@@ -157,33 +152,65 @@ public class NeuralNetwork{
     public void train(Vector inputs, Vector knownanswer, double learningRate){
 
         Vector guess = feedforward(inputs);
-        Vector[] errors = new Vector[layers];
-        System.out.println("Calculating Output Error");
-        errors[layers-1] = knownanswer.subtract(guess); //Output Error
+        if(guess.length() == knownanswer.length()) {
+            Vector[] errors = new Vector[layers];
+            System.out.println("Calculating Output Error");
+            errors[layers - 1] = knownanswer.subtract(guess); //Output Error
 
-        System.out.println("Calculating Hidden Errors");
+            System.out.println("Calculating Hidden Errors");
 
-        for (int i = layers-2; i >= 0; i--) {
+            for (int i = layers - 2; i >= 0; i--) {
 
-            System.out.println("Calculating Hidden Error: h" + i );
-            errors[i] =  weights[i+1].transpose().multiply(errors[i+1]);
+                System.out.println("    Calculating Hidden Error: h" + i);
+                errors[i] = weights[i + 1].transpose().multiply(errors[i + 1]);
+                System.out.println(errors[i].toString());
 
+            }
+            System.out.println("Recalculating weights output");
+
+            weights[layers - 1] = weights[layers - 1].add(learningSlope(errors[layers - 1], guess, hidden[layers - 2]).multiply(learningRate));
+
+            System.out.println("Recalculating weights hidden");
+
+            for (int i = layers - 2; i >= 0; i--) {
+
+
+                System.out.println("    Calculating Weights hidden: w" + i);
+                if (i == 0) {
+
+                    weights[i] = weights[i].add(learningSlope(errors[i], hidden[i], inputs).multiply(learningRate));
+                } else {
+
+
+                    weights[i] = weights[i].add(learningSlope(errors[i], hidden[i], hidden[i - 1]).multiply(learningRate));
+                }
+
+            }
+        }else{
+            System.out.println("KnownAnswer size does not equal calculated output");
         }
+    }
 
-        System.out.println("Recalculating weights");
+    public Matrix learningSlope(Vector Error, Vector Output, Vector Outputbevore)
+    {
+        System.out.println("        Calculating Learning Slope:");
+        Matrix OutputbevoreM = Outputbevore.toRowMatrix();
+        System.out.println("            1");
+        Vector product1 = Error.hadamardProduct(Output);
+        System.out.println("            2");
+        Vector product2 = Output.subtract(1);
+        System.out.println("            3");
+        product2.update(minus);
+        System.out.println("            4");
+        product1 = product1.hadamardProduct(product2);
+        System.out.println("            5");
 
-        for (int i = layers-1; i >=0; i--){
+        Matrix MatrixColumn1 = product1.toColumnMatrix();
+        System.out.println("            6");
+        Matrix LS = MatrixColumn1.multiply(OutputbevoreM);
 
-            System.out.println("Calculating LearningSlope");
+        return LS;
 
-            Matrix LearningSlope = errors[i].multiply()
-
-            System.out.println("Calculating Weights: w" + i);
-
-            weights[i] = weights[i];
-
-
-        }
     }
 
 }

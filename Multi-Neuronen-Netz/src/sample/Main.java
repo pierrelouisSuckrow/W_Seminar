@@ -29,16 +29,43 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
+
+        double [][] testa = {
+                {1, 2, 3},
+                {4, 5, 6},
+        };
+
+        Matrix test = new Basic2DMatrix(testa);
+        System.out.println(test.toString());
+        Matrix test2 = new Basic2DMatrix(2,3);
+        test2.setAll(1);
+        System.out.println(test2.toString());
+
+
         Reader Rinput = new Reader("Input1");
         double[][] input =  Rinput.newRead();
         Basic2DMatrix Minput = new Basic2DMatrix(input);
         Vector Vinput = Minput.toColumnVector();
-        Basic2DMatrix target = new Basic2DMatrix(1,1);
+        Vector target = new BasicVector(1);
         target.setAll(1);
-        NeuralNetwork netz1 = new NeuralNetwork(Minput.rows(), 2, 2,1);//Layers immer mit outputlayer angeben
-        netz1.feedforward(Vinput);
-        //netz1.train(Minput, target);
+        NeuralNetwork netz1 = new NeuralNetwork(Minput.rows(), 3, 3,1);//Layers immer mit outputlayer angeben
+        //netz1.feedforward(Vinput);
+        netz1.train(Vinput, target, 0.5);
+        /*
+        Reader Rinput2 = new Reader("Input3");
+        double[][] input2 =  Rinput2.newRead();
+        Basic2DMatrix Minput2 = new Basic2DMatrix(input2);
+        Vector Vinput2 = Minput2.toColumnVector();
 
+
+
+
+        System.out.println("TeSt4343");
+
+        System.out.println(netz1.learningSlope(Vinput, Vinput2, Vinput2).toString());
+        System.out.println(netz1.learningSlope(Vinput, Vinput2, Vinput2).multiply(2).toString());
+
+*/
         launch(args);
     }
 }
