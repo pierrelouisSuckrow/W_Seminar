@@ -11,12 +11,20 @@ import org.la4j.vector.dense.BasicVector;
 import org.la4j.vector.functor.VectorFunction;
 import org.la4j.vector.functor.VectorProcedure;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Random;
 
 
 public class NeuralNetwork{
 
+    PrintStream originalStream = System.out;
 
+    PrintStream dummyStream = new PrintStream(new OutputStream(){
+        public void write(int b) {
+            // NO-OP
+        }
+    });
 
     private int inputs;
     private int layers; //Länge des Netzes + Output
@@ -41,6 +49,10 @@ public class NeuralNetwork{
     };
 
     public NeuralNetwork(int inputs, int layers, int hiddenlayersrows, int outputs){
+
+
+
+
 
         this.inputs = inputs;
         this.layers = layers;
@@ -98,6 +110,7 @@ public class NeuralNetwork{
 
 
     public Vector feedforward(Vector input){
+        System.setOut(dummyStream);
         System.out.println("Inputs:");
         System.out.println(input);
 
@@ -136,7 +149,7 @@ public class NeuralNetwork{
             System.out.println(output);
 
 
-
+            System.setOut(originalStream);
 
             return output;
         }catch (Exception e) {
@@ -150,7 +163,7 @@ public class NeuralNetwork{
     }
 
     public void train(Vector inputs, Vector knownanswer, double learningRate){
-
+        System.setOut(dummyStream);
         Vector guess = feedforward(inputs);
         if(guess.length() == knownanswer.length()) {
             Vector[] errors = new Vector[layers];
@@ -189,6 +202,7 @@ public class NeuralNetwork{
         }else{
             System.out.println("KnownAnswer size does not equal calculated output");
         }
+        System.setOut(originalStream);
     }
 
     public Matrix learningSlope(Vector Error, Vector Output, Vector Outputbevore)
