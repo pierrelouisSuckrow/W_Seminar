@@ -35,8 +35,13 @@ public class Main extends Application {
                 {4, 5, 6},
         };
         double[] targettest = {
+                0.56879879879,
+                0.2,
                 0.9,
-                0.1,
+                0.133,
+                0.155,
+                0.177,
+                0.444,
         };
     /*
         Matrix test = new Basic2DMatrix(testa);
@@ -46,15 +51,15 @@ public class Main extends Application {
         System.out.println(test2.toString());
 
 */       System.out.println("Test");
-        Reader Rinput = new Reader("Input1");
+        Reader Rinput = new Reader("Input5");
         double[][] input =  Rinput.newRead();
         Basic2DMatrix Minput = new Basic2DMatrix(input);
         Vector Vinput = Minput.toColumnVector();
         Vector target = new BasicVector(targettest);
-        NeuralNetwork netz1 = new NeuralNetwork(Minput.rows(), 3, 3,2);//Layers immer mit outputlayer angeben
-
-        for(int e = 0; e < 2; e++){
-            netz1.train(Vinput, target, 0.3);
+        NeuralNetwork netz1 = new NeuralNetwork(Minput.rows(), 3, 30,7);//Layers immer mit outputlayer angeben
+        System.out.println(netz1.feedforward(Vinput).toString());
+        for(int e = 0; e < 1000; e++){
+            netz1.train(Vinput, target, 0.4);
         }
 
         System.out.println(netz1.feedforward(Vinput).toString());

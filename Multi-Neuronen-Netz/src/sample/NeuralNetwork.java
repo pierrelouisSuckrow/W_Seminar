@@ -18,13 +18,13 @@ import java.util.Random;
 
 public class NeuralNetwork{
 
-    PrintStream originalStream = System.out;
-
+    //PrintStream originalStream = System.out;
+    /*
     PrintStream dummyStream = new PrintStream(new OutputStream(){
         public void write(int b) {
             // NO-OP
         }
-    });
+    });*/
 
     private int inputs;
     private int layers; //Länge des Netzes + Output
@@ -51,7 +51,7 @@ public class NeuralNetwork{
     public NeuralNetwork(int inputs, int layers, int hiddenlayersrows, int outputs){
 
 
-
+        //System.setOut(dummyStream);
 
 
         this.inputs = inputs;
@@ -91,8 +91,7 @@ public class NeuralNetwork{
 
                         double random = (Math.random()*0.12)-0.12;
 
-                        //weights[i].set(z, r, random);
-                        weights[i].set(z, r, z*r);
+                        weights[i].set(z, r, random);
 
 
                     }
@@ -104,13 +103,13 @@ public class NeuralNetwork{
             System.out.println(bias[i].toString());
 
             }
-
+        //System.setOut(originalStream);
         }
 
 
 
     public Vector feedforward(Vector input){
-        System.setOut(dummyStream);
+        //System.setOut(dummyStream);
         System.out.println("Inputs:");
         System.out.println(input);
 
@@ -149,7 +148,7 @@ public class NeuralNetwork{
             System.out.println(output);
 
 
-            System.setOut(originalStream);
+            //System.setOut(originalStream);
 
             return output;
         }catch (Exception e) {
@@ -163,7 +162,7 @@ public class NeuralNetwork{
     }
 
     public void train(Vector inputs, Vector knownanswer, double learningRate){
-        System.setOut(dummyStream);
+        //System.setOut(dummyStream);
         Vector guess = feedforward(inputs);
         if(guess.length() == knownanswer.length()) {
             Vector[] errors = new Vector[layers];
@@ -202,11 +201,12 @@ public class NeuralNetwork{
         }else{
             System.out.println("KnownAnswer size does not equal calculated output");
         }
-        System.setOut(originalStream);
+        //System.setOut(originalStream);
     }
 
     public Matrix learningSlope(Vector Error, Vector Output, Vector Outputbevore)
     {
+        //System.setOut(dummyStream);
         System.out.println("        Calculating Learning Slope:");
         Matrix OutputbevoreM = Outputbevore.toRowMatrix();
         System.out.println("            1");
@@ -222,7 +222,7 @@ public class NeuralNetwork{
         Matrix MatrixColumn1 = product1.toColumnMatrix();
         System.out.println("            6");
         Matrix LS = MatrixColumn1.multiply(OutputbevoreM);
-
+        //System.setOut(originalStream);
         return LS;
 
     }
