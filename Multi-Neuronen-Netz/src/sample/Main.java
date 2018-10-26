@@ -20,6 +20,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setTitle("Multi-Neuronen-Netz");
+        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.show();
 
 
     }
@@ -50,7 +54,7 @@ public class Main extends Application {
         test2.setAll(1);
         System.out.println(test2.toString());
 
-*/       System.out.println("Test");
+         System.out.println("Test");
         Reader Rinput = new Reader("Input5");
         double[][] input =  Rinput.newRead();
         Basic2DMatrix Minput = new Basic2DMatrix(input);
@@ -58,12 +62,12 @@ public class Main extends Application {
         Vector target = new BasicVector(targettest);
         NeuralNetwork netz1 = new NeuralNetwork(Minput.rows(), 3, 30,7);//Layers immer mit outputlayer angeben
         System.out.println(netz1.feedforward(Vinput).toString());
-        for(int e = 0; e < 1000; e++){
+        for(int e = 0; e < 0; e++){
             netz1.train(Vinput, target, 0.4);
         }
 
         System.out.println(netz1.feedforward(Vinput).toString());
-        /*
+
         Reader Rinput2 = new Reader("Input3");
         double[][] input2 =  Rinput2.newRead();
         Basic2DMatrix Minput2 = new Basic2DMatrix(input2);
