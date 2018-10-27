@@ -27,6 +27,15 @@ public class TrainingSet {
 
     public  TrainingSet getBatch(int size){
 
+        if(size > 0 && size <= this.get_size()) {
+            TrainingSet set = new TrainingSet(input_size, target_size);
+            Integer[] ids = randomValues(0,this.get_size() - 1, size);
+            for(Integer i:ids) {
+                set.add(this.getInput(i),this.getTarget(i));
+            }
+            return set;
+        }else return this;
+
     }
 
     public  int get_size(){
@@ -38,12 +47,42 @@ public class TrainingSet {
         return training_data.get(i)[0];
     }
 
-    public double[] getOutput(int i){
+    public double[] getTarget(int i){
 
         return training_data.get(i)[1];
     }
 
     public int getInput_size(){return input_size;}
     public int getTarget_size(){return target_size;}
+
+    public static Integer[] randomValues(int lowerBound, int upperBound, int amount) {
+
+        lowerBound --;
+
+        if(amount > (upperBound-lowerBound)){
+            return null;
+        }
+
+        Integer[] values = new Integer[amount];
+        for(int i = 0; i< amount; i++){
+            int n = (int)(Math.random() * (upperBound-lowerBound+1) + lowerBound);
+            while(containsValue(values, n)){
+                n = (int)(Math.random() * (upperBound-lowerBound+1) + lowerBound);
+            }
+            values[i] = n;
+        }
+        return values;
+    }
+    public static <T extends Comparable<T>> boolean containsValue(T[] ar, T value){
+        for(int i = 0; i < ar.length; i++){
+            if(ar[i] != null){
+                if(value.compareTo(ar[i]) == 0){
+                    return true;
+                }
+            }
+
+        }
+        return false;
+    }
 
 }

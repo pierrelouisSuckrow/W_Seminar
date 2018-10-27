@@ -204,6 +204,8 @@ public class NeuralNetwork{
         //System.setOut(originalStream);
     }
 
+
+
     public Matrix learningSlope(Vector Error, Vector Output, Vector Outputbevore)
     {
         //System.setOut(dummyStream);

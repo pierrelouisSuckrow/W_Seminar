@@ -36,9 +36,10 @@ public class Controller implements Initializable {
     public TextField input_testing_set;
     public TextField input_number_layers_;
     public TextField input_length_layer_hidden;
-    public NeuralNetwork Net;
+    public NeuralNetworkGenerator Net;
     public Canvas canvas_paint;
     public Button button_clear;
+
 
     public Controller(){
 
@@ -81,11 +82,13 @@ public class Controller implements Initializable {
 
 
     public void GenerateNetwork(ActionEvent actionEvent) {
+        Net = new NeuralNetworkGenerator(Integer.parseInt(input_number_layers_.getText()), Integer.parseInt(input_length_layer_hidden.getText()));
 
-        Net = new NeuralNetwork(784,Integer.parseInt(input_number_layers_.getText()),Integer.parseInt(input_length_layer_hidden.getText()),10);
     }
 
     public void TrainNetwork(ActionEvent actionEvent) {
+        TrainingSet tset = Net.createTrainSet(0,4999);
+        Net.trainData(tset,100,50,100 );
     }
 
     public void clear_canvas(ActionEvent actionEvent) {
