@@ -89,7 +89,7 @@ public class NeuralNetwork{
                 {
                     for(int r = 0; r < weights[i].columns(); r++){
 
-                        double random = (Math.random()*0.12)-0.12;
+                        double random = (Math.random()*0.24)-0.12;
 
                         weights[i].set(z, r, random);
 

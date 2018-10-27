@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -101,5 +102,7 @@
             <Label fx:id="percentage_accuracy" text="---" GridPane.columnIndex="1" />
          </children>
       </GridPane>
+      <Canvas fx:id="canvas_paint" height="280.0" layoutX="30.0" layoutY="306.0" width="280.0" />
+      <Button fx:id="button_clear" layoutX="329.0" layoutY="555.0" mnemonicParsing="false" onAction="#clear_canvas" text="Clear" />
    </children>
 </AnchorPane>
