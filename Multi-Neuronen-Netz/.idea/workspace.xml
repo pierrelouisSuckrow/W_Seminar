@@ -58,23 +58,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="NeuralNetwork.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/NeuralNetwork.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2835">
-              <caret line="139" column="58" selection-start-line="139" selection-start-column="58" selection-end-line="139" selection-end-column="58" />
+            <state relative-caret-position="413">
+              <caret line="172" selection-start-line="172" selection-end-line="172" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NeuralNetworkGenerator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NeuralNetworkGenerator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/NeuralNetworkGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-391">
-              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+            <state relative-caret-position="337">
+              <caret line="92" column="8" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,32 +82,49 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TrainingSet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/TrainingSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="31" column="70" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+              <folding>
+                <element signature="method#TrainingSet#0;class#TrainingSet#0" />
+                <element signature="method#add#0;class#TrainingSet#0" />
+                <element signature="method#getInput#0;class#TrainingSet#0" />
+                <element signature="method#randomValues#0;class#TrainingSet#0" />
+                <element signature="method#containsValue#0;class#TrainingSet#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="90" column="37" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
+            <state relative-caret-position="554">
+              <caret line="168" column="8" lean-forward="true" selection-start-line="168" selection-start-column="8" selection-end-line="168" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="107" column="103" selection-start-line="107" selection-start-column="103" selection-end-line="107" selection-end-column="103" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file leaf-file-name="MnistImageLoader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistImageLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="15" selection-start-column="15" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MnistImageFile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistImageFile.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="189">
-              <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+              <caret line="53" column="69" lean-forward="true" selection-start-line="52" selection-start-column="49" selection-end-line="53" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -127,8 +132,35 @@
       <file leaf-file-name="MnistDbFile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistDbFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="70">
+              <caret line="6" column="31" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MnistLabelFile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistLabelFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-13">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MnistPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="99" column="17" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MnistImageFile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistImageFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -151,6 +183,7 @@
       <find>row</find>
       <find>colu</find>
       <find>File</find>
+      <find>sys</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -166,9 +199,7 @@
         <option value="$PROJECT_DIR$/src/sample/reader_test2.java" />
         <option value="$PROJECT_DIR$/src/sample/Reader.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/src/sample/TrainingSet.java" />
-        <option value="$PROJECT_DIR$/src/sample/NeuralNetwork.java" />
         <option value="$PROJECT_DIR$/src/sample/mnist/Mnist.java" />
         <option value="$PROJECT_DIR$/src/sample/mnist/MnistPanel.java" />
         <option value="$PROJECT_DIR$/src/sample/mnist/MnistLabelFile.java" />
@@ -176,8 +207,10 @@
         <option value="$PROJECT_DIR$/src/sample/mnist/MnistImageFile.java" />
         <option value="$PROJECT_DIR$/src/sample/mnist/MnistDbFile.java" />
         <option value="$PROJECT_DIR$/src/sample/la4j/src/main/java/org/la4j/Matrix.java" />
-        <option value="$PROJECT_DIR$/src/sample/NeuralNetworkGenerator.java" />
+        <option value="$PROJECT_DIR$/src/sample/NeuralNetwork.java" />
+        <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
+        <option value="$PROJECT_DIR$/src/sample/NeuralNetworkGenerator.java" />
       </list>
     </option>
   </component>
@@ -222,6 +255,20 @@
               <item name="Multi-Neuronen-Netz" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Multi-Neuronen-Netz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Multi-Neuronen-Netz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="mnist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Multi-Neuronen-Netz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Multi-Neuronen-Netz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Multi-Neuronen-Netz" type="b2602c69:ProjectViewProjectNode" />
@@ -372,12 +419,12 @@
       <workItem from="1539889982000" duration="40501000" />
       <workItem from="1540303528955" duration="16653000" />
       <workItem from="1540554153456" duration="1509000" />
-      <workItem from="1540556086160" duration="22824000" />
+      <workItem from="1540556086160" duration="55012000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150961000" />
+    <option name="totallyTimeSpent" value="183149000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -385,37 +432,37 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49356222" weight="0.21028571" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.09012876" side_tool="true" visible="true" weight="0.25257143" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.9098712" visible="true" weight="0.25257143" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.49356222" weight="0.21028571" />
+      <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info id="Image Layers" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.09012876" side_tool="true" weight="0.25257143" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.9098712" visible="true" weight="0.25257143" />
+      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2054721" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2054721" />
+      <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="UI Designer" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49947917" weight="0.39977852" />
-      <window_info anchor="right" id="JetGradle" order="3" />
+      <window_info anchor="right" id="JetGradle" order="6" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49947917" weight="0.32890365" />
       <window_info anchor="bottom" id="Changes" order="7" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Profiler" order="7" />
-      <window_info anchor="bottom" id="Problems" order="7" />
+      <window_info anchor="bottom" id="Profiler" order="9" />
+      <window_info anchor="bottom" id="Problems" order="10" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Application Servers" order="7" />
+      <window_info anchor="bottom" id="Application Servers" order="11" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -430,7 +477,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -720,14 +767,6 @@
     <entry file="file://$PROJECT_DIR$/src/sample/resources/TrainingSet.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="105" column="105" selection-start-line="105" selection-start-column="105" selection-end-line="105" selection-end-column="105" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/reader_test2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -748,9 +787,96 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/la4j/src/main/java/org/la4j/Matrix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/mnist/Mnist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/NeuralNetwork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="172" selection-start-line="172" selection-end-line="172" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="99" column="17" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistDbFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="107" column="103" selection-start-line="107" selection-start-column="103" selection-end-line="107" selection-end-column="103" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistImageFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistImageLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="53" column="69" lean-forward="true" selection-start-line="52" selection-start-column="49" selection-end-line="53" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistLabelFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-13">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="168" column="8" lean-forward="true" selection-start-line="168" selection-start-column="8" selection-end-line="168" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/TrainingSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
+        <state relative-caret-position="134">
           <caret line="31" column="70" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
           <folding>
             <element signature="method#TrainingSet#0;class#TrainingSet#0" />
@@ -762,89 +888,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistLabelFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" selection-start-column="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistImageLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" selection-start-column="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistImageFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistDbFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/la4j/src/main/java/org/la4j/Matrix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/NeuralNetwork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2835">
-          <caret line="139" column="58" selection-start-line="139" selection-start-column="58" selection-end-line="139" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/mnist/Mnist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/mnist/MnistPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-189">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/NeuralNetworkGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="90" column="37" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
+        <state relative-caret-position="337">
+          <caret line="92" column="8" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

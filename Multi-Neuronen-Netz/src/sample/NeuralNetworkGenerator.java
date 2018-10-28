@@ -3,6 +3,9 @@ package sample;
 import org.la4j.Vector;
 import org.la4j.vector.dense.BasicVector;
 import java.io.File;
+import java.sql.Array;
+import java.util.Arrays;
+
 import  sample.mnist.*;
 
 
@@ -43,7 +46,7 @@ public class NeuralNetworkGenerator {
 
     }
     //static ????????
-    public TrainingSet createTrainSet(int start, int end) {
+    public TrainingSet createTrainSet(String namei, String namel, int start, int end) {
 
         TrainingSet set = new TrainingSet(inputs_length, output_length);
 
@@ -51,8 +54,8 @@ public class NeuralNetworkGenerator {
 
             String path = new File("").getAbsolutePath();
 
-            MnistImageFile m = new MnistImageFile(path + "/resources/trainImage.idx3-ubyte", "rw");
-            MnistLabelFile l = new MnistLabelFile(path + "/resources/trainLabel.idx1-ubyte", "rw");
+            MnistImageFile m = new MnistImageFile("C:/Users/pierr/OneDrive/Dokumente/W_Seminar/W_Seminar/Multi-Neuronen-Netz/src/sample/resources/" + namei, "rw");
+            MnistLabelFile l = new MnistLabelFile("C:/Users/pierr/OneDrive/Dokumente/W_Seminar/W_Seminar/Multi-Neuronen-Netz/src/sample/resources/" + namel, "rw");
 
             for(int i = start; i <= end; i++) {
                 if(i % 100 ==  0){
@@ -85,13 +88,29 @@ public class NeuralNetworkGenerator {
         }
     }
 
-    /*
-    public static void testTrainSet(TrainingSet set, int printSteps) {
+    public  void trainRaw(TrainingSet set)
+    {
+
+        for(int i = 0; i < 10; i++) {
+            for (int e = 0; e < set.get_size(); e++) {
+                Vector input = new BasicVector(set.getInput(e));
+                Vector target = new BasicVector(set.getTarget(e));
+                Net.train(input, target, learning_rate);
+            }
+        }
+
+        //System.out.println(Arrays.toString(set.getInput(1)));
+    }
+
+
+    public void testTrainSet(TrainingSet set, int printSteps) {
         int correct = 0;
         for(int i = 0; i < set.get_size(); i++) {
-
-            double highest = NetworkTools.indexOfHighestValue(net.calculate(set.getInput(i)));
-            double actualHighest = NetworkTools.indexOfHighestValue(set.getOutput(i));
+            Vector input = new BasicVector(set.getInput(i));
+            double highest = indexOfHighestValue(Net.feedforward(input).toDenseVector().toArray());
+            double actualHighest = indexOfHighestValue(set.getTarget(i));
+            System.out.println("TargetTest:");
+            System.out.println(Arrays.toString(set.getTarget(i)));
             if(highest == actualHighest) {
 
                 correct ++ ;
@@ -100,8 +119,22 @@ public class NeuralNetworkGenerator {
                 System.out.println(i + ": " + (double)correct / (double) (i + 1));
             }
         }
-        System.out.println("Testing finished, RESULT: " + correct + " / " + set.size()+ "  -> " + (double)correct / (double)set.size() +" %");
+        System.out.println("Testing finished, RESULT: " + correct + " / " + set.get_size()+ "  -> " + (double)correct / (double)set.get_size());
     }
-    */
+
+    public static int indexOfHighestValue(double[] values){
+        int index = 0;
+        for(int i = 1; i < values.length; i++){
+            if(values[i] > values[index]){
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    public double[] guess(double[] inputs){
+        Vector input = new BasicVector(inputs);
+        return Net.feedforward(input).toDenseVector().toArray();
+    }
 
 }

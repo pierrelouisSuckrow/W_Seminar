@@ -89,18 +89,23 @@ public class NeuralNetwork{
                 {
                     for(int r = 0; r < weights[i].columns(); r++){
 
-                        double random = (Math.random()*0.24)-0.12;
+                        double random = (Math.random()*1.8)-0.9;
 
                         weights[i].set(z, r, random);
 
 
                     }
                 }
-            bias[i].setAll(1);
-            System.out.println("Weigths" + i);
-            System.out.println(weights[i].toString());
-            System.out.println("Bias" + i);
-            System.out.println(bias[i].toString());
+
+            for(int z = 0; z < bias[i].length(); z++)
+            {
+                double random = (Math.random()*1.2)-0.5;
+                bias[i].set(z, random);
+            }
+            //System.out.println("Weigths" + i);
+            //System.out.println(weights[i].toString());
+            //System.out.println("Bias" + i);
+            //System.out.println(bias[i].toString());
 
             }
         //System.setOut(originalStream);
@@ -110,37 +115,37 @@ public class NeuralNetwork{
 
     public Vector feedforward(Vector input){
         //System.setOut(dummyStream);
-        System.out.println("Inputs:");
-        System.out.println(input);
+        //System.out.println("Inputs:");
+        //System.out.println(input);
 
         for(int i = 0; i < layers-1; i++) {
 
             if(i == 0){
-                System.out.println("Calculating first Hiddenlayer");
+                //System.out.println("Calculating first Hiddenlayer");
                 hidden[i] = weights[i].multiply(input); // 1 Hiddenlayer mit Inputs
-                System.out.println("Hidden 0 without Bias or Sig");
-                System.out.println(hidden[i].toString());
+                //System.out.println("Hidden 0 without Bias or Sig");
+                //System.out.println(hidden[i].toString());
 
             }else{ // Hidden mit Hidden
-                System.out.println("Hiddenlayer " + i);
+                //System.out.println("Hiddenlayer " + i);
                 hidden[i] = hidden[i-1].multiply(weights[i]);
             }
-            System.out.println("Calculating bias");
+            //System.out.println("Calculating bias");
             hidden[i].add(bias[i]);
-            System.out.println("Calculating sigmoid");
+            //System.out.println("Calculating sigmoid");
             hidden[i].update(sigmoid);
 
-            System.out.println("hidden" + i);
-            System.out.println(hidden[i].toString());
+            //System.out.println("hidden" + i);
+            //System.out.println(hidden[i].toString());
 
         }
-        System.out.println("Output calculation");
+        //System.out.println("Output calculation");
         try {
 
             Vector output = weights[layers-1].multiply(hidden[layers-2]);
-            System.out.println("Calculating bias output");
+            //System.out.println("Calculating bias output");
             output.add(bias[layers-1]);
-            System.out.println("Calculating sigmoid output");
+            //System.out.println("Calculating sigmoid output");
             output.update(sigmoid);
 
 
@@ -163,31 +168,33 @@ public class NeuralNetwork{
 
     public void train(Vector inputs, Vector knownanswer, double learningRate){
         //System.setOut(dummyStream);
+        System.out.println("target:");
+        System.out.println(knownanswer.toString());
         Vector guess = feedforward(inputs);
         if(guess.length() == knownanswer.length()) {
             Vector[] errors = new Vector[layers];
-            System.out.println("Calculating Output Error");
+            //System.out.println("Calculating Output Error");
             errors[layers - 1] = knownanswer.subtract(guess); //Output Error
 
-            System.out.println("Calculating Hidden Errors");
+            //System.out.println("Calculating Hidden Errors");
 
             for (int i = layers - 2; i >= 0; i--) {
 
-                System.out.println("    Calculating Hidden Error: h" + i);
+                //System.out.println("    Calculating Hidden Error: h" + i);
                 errors[i] = weights[i + 1].transpose().multiply(errors[i + 1]);
-                System.out.println(errors[i].toString());
+                //System.out.println(errors[i].toString());
 
             }
-            System.out.println("Recalculating weights output");
+            //System.out.println("Recalculating weights output");
 
             weights[layers - 1] = weights[layers - 1].add(learningSlope(errors[layers - 1], guess, hidden[layers - 2]).multiply(learningRate));
 
-            System.out.println("Recalculating weights hidden");
+            //System.out.println("Recalculating weights hidden");
 
             for (int i = layers - 2; i >= 0; i--) {
 
 
-                System.out.println("    Calculating Weights hidden: w" + i);
+                //System.out.println("    Calculating Weights hidden: w" + i);
                 if (i == 0) {
 
                     weights[i] = weights[i].add(learningSlope(errors[i], hidden[i], inputs).multiply(learningRate));
@@ -209,20 +216,20 @@ public class NeuralNetwork{
     public Matrix learningSlope(Vector Error, Vector Output, Vector Outputbevore)
     {
         //System.setOut(dummyStream);
-        System.out.println("        Calculating Learning Slope:");
+        //System.out.println("        Calculating Learning Slope:");
         Matrix OutputbevoreM = Outputbevore.toRowMatrix();
-        System.out.println("            1");
+        //System.out.println("            1");
         Vector product1 = Error.hadamardProduct(Output);
-        System.out.println("            2");
+        //System.out.println("            2");
         Vector product2 = Output.subtract(1);
-        System.out.println("            3");
+        //System.out.println("            3");
         product2.update(minus);
-        System.out.println("            4");
+        //System.out.println("            4");
         product1 = product1.hadamardProduct(product2);
-        System.out.println("            5");
+        //System.out.println("            5");
 
         Matrix MatrixColumn1 = product1.toColumnMatrix();
-        System.out.println("            6");
+        //System.out.println("            6");
         Matrix LS = MatrixColumn1.multiply(OutputbevoreM);
         //System.setOut(originalStream);
         return LS;
