@@ -34,7 +34,7 @@ public class Controller implements Initializable {
 
     public Button ButtonNetworkGenerator;
     public Button ButtonTrainNetwork;
-    public Label[] percentage_guess = new Label[10];
+
     public Label percentage_0;
     public Label percentage_1;
     public Label percentage_2;
@@ -54,23 +54,19 @@ public class Controller implements Initializable {
     public Canvas canvas_paint;
     public Button button_clear;
     public Button button_guess;
+    public Label[] percentage_guess = {
+            percentage_0,
+            percentage_1,
+            percentage_2,
+            percentage_3,
+            percentage_4,
+            percentage_5,
+            percentage_6,
+            percentage_7,
+            percentage_8,
+            percentage_9
+    };
 
-
-    public Controller(){
-
-
-        percentage_guess[0] = percentage_0;
-        percentage_guess[1] = percentage_1;
-        percentage_guess[2] = percentage_2;
-        percentage_guess[3] = percentage_3;
-        percentage_guess[4] = percentage_4;
-        percentage_guess[5] = percentage_5;
-        percentage_guess[6] = percentage_6;
-        percentage_guess[7] = percentage_7;
-        percentage_guess[8] = percentage_8;
-        percentage_guess[9] = percentage_9;
-
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -78,11 +74,11 @@ public class Controller implements Initializable {
 
 
         GraphicsContext g = canvas_paint.getGraphicsContext2D();
-        //g.setFill(WHITE);
-        //g.fillRect(0,0, canvas_paint.getWidth(), canvas_paint.getHeight());
+        g.setFill(WHITE);
+        g.fillRect(0,0, canvas_paint.getWidth(), canvas_paint.getHeight());
 
         canvas_paint.setOnMouseDragged(e -> {
-            double size = 10;
+            double size = 12;
             double x = e.getX() - size/2;
             double y = e.getY() - size/2;
 
@@ -117,7 +113,7 @@ public class Controller implements Initializable {
 
     public void TestNetwork(ActionEvent actionEvent) {
         TrainingSet testSet = Net.createTrainSet("t10k-images.idx3-ubyte", "t10k-labels.idx1-ubyte",0,10000);
-        Net.testTrainSet(testSet, 10);
+        percentage_accuracy.setText(String.valueOf(Net.testTrainSet(testSet, 10)));;
     }
 
     public void guess(ActionEvent actionEvent) {
@@ -168,6 +164,20 @@ public class Controller implements Initializable {
         System.out.println(Arrays.toString(input));
         double[] output = Net.guess(input);
 
+            for(int i = 0; i < 10; i++){
+                System.out.println(  (double) Math.round(output[i]*100)/100);
+        }
+
+                percentage_0.setText(String.valueOf((double) Math.round(output[0]*100)/100));
+                percentage_1.setText(String.valueOf((double) Math.round(output[1]*100)/100));
+                percentage_2.setText(String.valueOf((double) Math.round(output[2]*100)/100));
+                percentage_3.setText(String.valueOf((double) Math.round(output[3]*100)/100));
+                percentage_4.setText(String.valueOf((double) Math.round(output[4]*100)/100));
+                percentage_5.setText(String.valueOf((double) Math.round(output[5]*100)/100));
+                percentage_6.setText(String.valueOf((double) Math.round(output[6]*100)/100));
+                percentage_7.setText(String.valueOf((double) Math.round(output[7]*100)/100));
+                percentage_8.setText(String.valueOf((double) Math.round(output[8]*100)/100));
+                percentage_9.setText(String.valueOf((double) Math.round(output[9]*100)/100));
 
 
     }

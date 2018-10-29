@@ -54,8 +54,8 @@ public class NeuralNetworkGenerator {
 
             String path = new File("").getAbsolutePath();
 
-            MnistImageFile m = new MnistImageFile("C:/Users/pierr/OneDrive/Dokumente/W_Seminar/W_Seminar/Multi-Neuronen-Netz/src/sample/resources/" + namei, "rw");
-            MnistLabelFile l = new MnistLabelFile("C:/Users/pierr/OneDrive/Dokumente/W_Seminar/W_Seminar/Multi-Neuronen-Netz/src/sample/resources/" + namel, "rw");
+            MnistImageFile m = new MnistImageFile(path + "/src/sample/resources/" + namei, "rw");
+            MnistLabelFile l = new MnistLabelFile(path + "/src/sample/resources/" + namel, "rw");
 
             for(int i = start; i <= end; i++) {
                 if(i % 100 ==  0){
@@ -91,7 +91,7 @@ public class NeuralNetworkGenerator {
     public  void trainRaw(TrainingSet set)
     {
 
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 1; i++) {
             for (int e = 0; e < set.get_size(); e++) {
                 Vector input = new BasicVector(set.getInput(e));
                 Vector target = new BasicVector(set.getTarget(e));
@@ -103,7 +103,7 @@ public class NeuralNetworkGenerator {
     }
 
 
-    public void testTrainSet(TrainingSet set, int printSteps) {
+    public double testTrainSet(TrainingSet set, int printSteps) {
         int correct = 0;
         for(int i = 0; i < set.get_size(); i++) {
             Vector input = new BasicVector(set.getInput(i));
@@ -120,6 +120,7 @@ public class NeuralNetworkGenerator {
             }
         }
         System.out.println("Testing finished, RESULT: " + correct + " / " + set.get_size()+ "  -> " + (double)correct / (double)set.get_size());
+        return (double)correct / (double)set.get_size();
     }
 
     public static int indexOfHighestValue(double[] values){
