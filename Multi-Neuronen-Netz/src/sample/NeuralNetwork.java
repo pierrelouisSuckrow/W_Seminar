@@ -18,15 +18,7 @@ import java.util.Random;
 
 public class NeuralNetwork{
 
-    //PrintStream originalStream = System.out;
-    /*
-    PrintStream dummyStream = new PrintStream(new OutputStream(){
-        public void write(int b) {
-            // NO-OP
-        }
-    });*/
-
-    private int inputs;
+    private int inputs; //Anzahl Inputs
     private int layers; //Länge des Netzes + Output
     private int outputs; //Anzahl der Ouputs
     private int hiddenlayersrows; //Anzahl der Nodes im HiddenLayer
@@ -34,6 +26,7 @@ public class NeuralNetwork{
     BasicVector[] bias; //Bias
     static Vector[] hidden; //HiddenLayers
 
+    //Sigmoid Funktion
     VectorFunction sigmoid = new VectorFunction() {
         @Override
         public double evaluate(int i, double value) {
@@ -41,6 +34,7 @@ public class NeuralNetwork{
         }
     };
 
+    // ändert das Vorzeichen
     VectorFunction minus = new VectorFunction() {
         @Override
         public double evaluate(int i, double value) {
@@ -49,10 +43,6 @@ public class NeuralNetwork{
     };
 
     public NeuralNetwork(int inputs, int layers, int hiddenlayersrows, int outputs){
-
-
-        //System.setOut(dummyStream);
-
 
         this.inputs = inputs;
         this.layers = layers;
@@ -64,7 +54,6 @@ public class NeuralNetwork{
         for(int i = 0; i < layers; i++){
 
 
-
             if(i == layers-1) { //Für Outputs
 
                 weights[i] = new Basic2DMatrix(outputs, hiddenlayersrows);
@@ -73,19 +62,16 @@ public class NeuralNetwork{
 
             }else if(i == 0){
 
-
                 weights[i] = new Basic2DMatrix(hiddenlayersrows, inputs);
                 bias[i] = new BasicVector(hiddenlayersrows);
 
-
             }else{
-
                 weights[i] = new Basic2DMatrix(hiddenlayersrows, hiddenlayersrows);
                 bias[i] = new BasicVector(hiddenlayersrows);    
 
             }
 
-                for(int z = 0; z < weights[i].rows(); z++)
+            for(int z = 0; z < weights[i].rows(); z++)
                 {
                     for(int r = 0; r < weights[i].columns(); r++){
 
@@ -102,50 +88,41 @@ public class NeuralNetwork{
                 double random = (Math.random()*1.2)-0.5;
                 bias[i].set(z, random);
             }
-            //System.out.println("Weigths" + i);
-            //System.out.println(weights[i].toString());
-            //System.out.println("Bias" + i);
-            //System.out.println(bias[i].toString());
 
             }
-        //System.setOut(originalStream);
+
         }
 
 
-
+//Berechnet die Outputs des Netzes
     public Vector feedforward(Vector input){
-        //System.setOut(dummyStream);
-        //System.out.println("Inputs:");
-        //System.out.println(input);
 
+        //Kalkuliert die Hiddenlayers
         for(int i = 0; i < layers-1; i++) {
 
             if(i == 0){
-                //System.out.println("Calculating first Hiddenlayer");
                 hidden[i] = weights[i].multiply(input); // 1 Hiddenlayer mit Inputs
-                //System.out.println("Hidden 0 without Bias or Sig");
-                //System.out.println(hidden[i].toString());
+
 
             }else{ // Hidden mit Hidden
-                //System.out.println("Hiddenlayer " + i);
+
                 hidden[i] = hidden[i-1].multiply(weights[i]);
             }
-            //System.out.println("Calculating bias");
+            //Fügt BIAS hinzu
             hidden[i].add(bias[i]);
-            //System.out.println("Calculating sigmoid");
+            //Aktivierungsfunktion
             hidden[i].update(sigmoid);
 
-            //System.out.println("hidden" + i);
-            //System.out.println(hidden[i].toString());
+
 
         }
-        //System.out.println("Output calculation");
-        try {
+
+        //Kalkuliert den Output
 
             Vector output = weights[layers-1].multiply(hidden[layers-2]);
-            //System.out.println("Calculating bias output");
+            //Fügt Bias hinzu
             output.add(bias[layers-1]);
-            //System.out.println("Calculating sigmoid output");
+            //Aktvierungsfunktion
             output.update(sigmoid);
 
 
@@ -153,54 +130,52 @@ public class NeuralNetwork{
             System.out.println(output);
 
 
-            //System.setOut(originalStream);
-
             return output;
-        }catch (Exception e) {
-
-            System.out.println(e);
-            return null;
-        }
 
 
 
     }
 
+    //Trainiert einmal das Netz
+
     public void train(Vector inputs, Vector knownanswer, double learningRate){
-        //System.setOut(dummyStream);
+
         System.out.println("target:");
         System.out.println(knownanswer.toString());
+        //Feedforward der Inputs
         Vector guess = feedforward(inputs);
+        //output und target gleiche Größe
         if(guess.length() == knownanswer.length()) {
+            //Array aus Vektoren für die Fehler
             Vector[] errors = new Vector[layers];
-            //System.out.println("Calculating Output Error");
+            //=(target-output)
             errors[layers - 1] = knownanswer.subtract(guess); //Output Error
 
-            //System.out.println("Calculating Hidden Errors");
+            //Hiddenerror:
 
             for (int i = layers - 2; i >= 0; i--) {
 
-                //System.out.println("    Calculating Hidden Error: h" + i);
+                // = Transponierte Gewichtung * error davor
                 errors[i] = weights[i + 1].transpose().multiply(errors[i + 1]);
-                //System.out.println(errors[i].toString());
+
 
             }
-            //System.out.println("Recalculating weights output");
+            //Gewichtungsupdate für Output Gewichtungen
+            // = weights + learningRate * Steigung
 
             weights[layers - 1] = weights[layers - 1].add(learningSlope(errors[layers - 1], guess, hidden[layers - 2]).multiply(learningRate));
 
-            //System.out.println("Recalculating weights hidden");
+
 
             for (int i = layers - 2; i >= 0; i--) {
 
 
-                //System.out.println("    Calculating Weights hidden: w" + i);
                 if (i == 0) {
-
+                    //Gewichtungsupdate für Input Gewichtungen
                     weights[i] = weights[i].add(learningSlope(errors[i], hidden[i], inputs).multiply(learningRate));
                 } else {
 
-
+                    //Gewichtungsupdate für Hidden Gewichtungen
                     weights[i] = weights[i].add(learningSlope(errors[i], hidden[i], hidden[i - 1]).multiply(learningRate));
                 }
 
@@ -208,30 +183,31 @@ public class NeuralNetwork{
         }else{
             System.out.println("KnownAnswer size does not equal calculated output");
         }
-        //System.setOut(originalStream);
+
     }
 
 
-
+    //Kalkuliert die Tangente
     public Matrix learningSlope(Vector Error, Vector Output, Vector Outputbevore)
     {
-        //System.setOut(dummyStream);
-        //System.out.println("        Calculating Learning Slope:");
+        //Konvertiert Vektor zu 1D Matrix und Transposiert diese
         Matrix OutputbevoreM = Outputbevore.toRowMatrix();
-        //System.out.println("            1");
-        Vector product1 = Error.hadamardProduct(Output);
-        //System.out.println("            2");
-        Vector product2 = Output.subtract(1);
-        //System.out.println("            3");
-        product2.update(minus);
-        //System.out.println("            4");
-        product1 = product1.hadamardProduct(product2);
-        //System.out.println("            5");
 
+        // = (E*O)
+        Vector product1 = Error.hadamardProduct(Output);
+        // = (1-O)
+        Vector product2 = Output.subtract(1);
+        product2.update(minus);
+
+        // = (E*O)*(1-O)
+        product1 = product1.hadamardProduct(product2);
+
+        //Konvertiert Vektor zu 1D Matrix
         Matrix MatrixColumn1 = product1.toColumnMatrix();
-        //System.out.println("            6");
+
+        // = (E*O*(1-O) * Output von dem Layer davor
         Matrix LS = MatrixColumn1.multiply(OutputbevoreM);
-        //System.setOut(originalStream);
+
         return LS;
 
     }

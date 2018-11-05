@@ -19,7 +19,7 @@
          </font>
       </Text>
       <Text layoutX="34.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="by Pierre-Louis Suckrow" AnchorPane.leftAnchor="30.0" />
-      <Text layoutX="34.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="v 1.0" wrappingWidth="79.7177734375" AnchorPane.leftAnchor="30.0" />
+      <Text layoutX="29.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Final Version" wrappingWidth="134.61913168430328" AnchorPane.leftAnchor="29.0" />
       <Text layoutX="29.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eigenschaften des Netzes" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="113.576171875">
          <font>
             <Font size="18.0" />
@@ -32,19 +32,16 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trainigsset:" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prüfungsset:" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl Layers:" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Länge Hidden Layer:" GridPane.rowIndex="3" />
-            <TextField fx:id="input_trainig_set" GridPane.columnIndex="1" />
-            <TextField fx:id="input_testing_set" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="input_number_layers_" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="input_length_layer_hidden" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl Layers:" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Länge Hidden Layer:" GridPane.rowIndex="1" />
+            <TextField fx:id="input_number_layers_" GridPane.columnIndex="1" />
+            <TextField fx:id="input_length_layer_hidden" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loops TrainingSet" GridPane.rowIndex="2" />
+            <TextField fx:id="nummber_loops" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button fx:id="ButtonNetworkGenerator" layoutX="406.0" layoutY="122.0" mnemonicParsing="false" onAction="#GenerateNetwork" text="Netz generieren" AnchorPane.leftAnchor="406.0" AnchorPane.topAnchor="113.0" />

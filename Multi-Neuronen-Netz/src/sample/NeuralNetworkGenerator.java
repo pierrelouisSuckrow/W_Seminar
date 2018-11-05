@@ -32,19 +32,6 @@ public class NeuralNetworkGenerator {
 
 
 
-    public void train_batch(TrainingSet set, int loops, int batch_size){
-        if(inputs_length == set.getInput_size() || output_length == set.getTarget_size())
-        for(int i = 0; i < loops; i++){
-            TrainingSet batch = set.getBatch(batch_size);
-            for(int z = 0; i < batch_size;i++){
-                Vector input = new BasicVector(batch.getInput(z));
-                Vector target = new BasicVector(batch.getTarget(z));
-                Net.train(input, target, learning_rate);
-
-            }
-        }
-
-    }
     //static ????????
     public TrainingSet createTrainSet(String namei, String namel, int start, int end) {
 
@@ -54,8 +41,8 @@ public class NeuralNetworkGenerator {
 
             String path = new File("").getAbsolutePath();
 
-            MnistImageFile m = new MnistImageFile(path + "/src/sample/resources/" + namei, "rw");
-            MnistLabelFile l = new MnistLabelFile(path + "/src/sample/resources/" + namel, "rw");
+            MnistImageFile m = new MnistImageFile(path + "/sample/resources/" + namei, "rw");
+            MnistLabelFile l = new MnistLabelFile(path + "/sample/resources/" + namel, "rw");
 
             for(int i = start; i <= end; i++) {
                 if(i % 100 ==  0){
@@ -81,17 +68,10 @@ public class NeuralNetworkGenerator {
         return set;
     }
 
-    public void trainData(TrainingSet set, int epochs, int loops, int batch_size) {
-        for(int e = 0; e < epochs;e++) {
-            train_batch(set, loops, batch_size);
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>   "+ e+ "   <<<<<<<<<<<<<<<<<<<<<<<<<<");
-        }
-    }
 
-    public  void trainRaw(TrainingSet set)
+    public  void trainRaw(TrainingSet set, int loops)
     {
-
-        for(int i = 0; i < 1; i++) {
+        for(int i = 0; i < loops; i++) {
             for (int e = 0; e < set.get_size(); e++) {
                 Vector input = new BasicVector(set.getInput(e));
                 Vector target = new BasicVector(set.getTarget(e));
